@@ -15,7 +15,7 @@ import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
  */
 class BasicS3BlankTagCreateParams(
   region: String? = null,
-  var callback: (() -> Unit)? = null
+  override var callback: (() -> Unit)? = null
 ) : S3BlankTagCreateParams, BasicS3RegionRequest(region) {
 
   override val tags: S3MutableTagMap = BasicS3MutableTagMap()
