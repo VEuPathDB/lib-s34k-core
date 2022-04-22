@@ -1,0 +1,82 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+  kotlin("jvm") version "1.6.20"
+  id("org.jetbrains.dokka") version "1.6.10"
+  `java-library`
+  `maven-publish`
+}
+
+group = "org.veupathdb.lib.s3"
+version = "0.1.0-SNAPSHOT"
+
+repositories {
+  mavenLocal()
+  mavenCentral()
+}
+
+java {
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
+
+  withSourcesJar()
+  withJavadocJar()
+}
+
+dependencies {
+  implementation(kotlin("stdlib"))
+
+  api("org.veupathdb.lib.s3:s34k:0.1.0-SNAPSHOT") { isChanging = true }
+
+  testImplementation(kotlin("test"))
+}
+
+tasks.test {
+  useJUnitPlatform()
+}
+
+task("docs") {
+  dependsOn("dokkaHtml", "dokkaJavadoc")
+}
+
+tasks.withType<KotlinCompile> {
+  kotlinOptions.jvmTarget = "1.8"
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHub"
+      url = uri("https://maven.pkg.github.com/VEuPathDB/lib-s34k-core")
+      credentials {
+        username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+        password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+      }
+    }
+  }
+
+  publications {
+    create<MavenPublication>("gpr") {
+      from(components["java"])
+      pom {
+        name.set("Generalized S3 API")
+        description.set("Provides a set of basic implementations and abstract types implementing base functionality of the S34K API.")
+        url.set("https://github.com/VEuPathDB/lib-s34k-core")
+        developers {
+          developer {
+            id.set("epharper")
+            name.set("Elizabeth Paige Harper")
+            email.set("epharper@upenn.edu")
+            url.set("https://github.com/foxcapades")
+            organization.set("VEuPathDB")
+          }
+        }
+        scm {
+          connection.set("scm:git:git://github.com/VEuPathDB/lib-s34k-core.git")
+          developerConnection.set("scm:git:ssh://github.com/VEuPathDB/lib-s34k-core.git")
+          url.set("https://github.com/VEuPathDB/lib-s34k-core")
+        }
+      }
+    }
+  }
+}
