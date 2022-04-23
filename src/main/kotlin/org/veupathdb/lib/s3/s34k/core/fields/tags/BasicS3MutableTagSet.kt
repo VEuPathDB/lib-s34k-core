@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.core.fields.tags
 
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
 
-class BasicS3MutableTagSet : S3MutableTagSet, BasicS3TagSet {
+open class BasicS3MutableTagSet : S3MutableTagSet, BasicS3TagSet {
 
   constructor() : super()
 

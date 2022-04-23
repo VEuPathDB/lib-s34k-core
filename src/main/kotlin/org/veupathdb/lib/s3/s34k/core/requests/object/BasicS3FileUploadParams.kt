@@ -7,7 +7,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3FileUploadParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 import java.io.File
 
-class BasicS3FileUploadParams : S3FileUploadParams, BasicS3ObjectWriteParams {
+open class BasicS3FileUploadParams : S3FileUploadParams, BasicS3ObjectWriteParams {
 
   override var localFile: File?
 

@@ -7,7 +7,7 @@ import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagDeleteParams
 
-class BasicS3BlankTagDeleteParams(
+open class BasicS3BlankTagDeleteParams(
   region: String? = null,
   override var callback: ((S3TagMap) -> Unit)? = null
 ) : S3BlankTagDeleteParams, BasicS3RegionRequest(region) {

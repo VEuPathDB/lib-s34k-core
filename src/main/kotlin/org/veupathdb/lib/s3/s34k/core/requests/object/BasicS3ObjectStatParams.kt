@@ -5,7 +5,7 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectStatParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
 
-class BasicS3ObjectStatParams : S3ObjectStatParams, BasicS3ObjectParams {
+open class BasicS3ObjectStatParams : S3ObjectStatParams, BasicS3ObjectParams {
 
   override var callback: ((S3ObjectMeta) -> Unit)?
 

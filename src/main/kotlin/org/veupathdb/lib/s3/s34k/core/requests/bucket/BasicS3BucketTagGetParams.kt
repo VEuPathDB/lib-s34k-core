@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagGetParams
  *
  * @since v0.1.0
  */
-class BasicS3BucketTagGetParams : S3BucketTagGetParams,
+open class BasicS3BucketTagGetParams : S3BucketTagGetParams,
   BasicS3BucketRequestParams {
 
   override var callback: ((tags: S3TagMap) -> Unit)?

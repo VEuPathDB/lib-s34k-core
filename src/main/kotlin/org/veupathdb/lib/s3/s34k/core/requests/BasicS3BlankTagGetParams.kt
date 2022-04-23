@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
  *
  * @since v0.1.0
  */
-class BasicS3BlankTagGetParams(
+open class BasicS3BlankTagGetParams(
   region: String? = null,
   override var callback: ((S3TagMap) -> Unit)? = null
 ) : S3BlankTagGetParams, BasicS3RegionRequest(region) {

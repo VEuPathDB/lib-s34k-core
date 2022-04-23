@@ -1,8 +1,12 @@
 package org.veupathdb.lib.s3.s34k.core
 
 import org.veupathdb.lib.s3.s34k.S3Client
+import org.veupathdb.lib.s3.s34k.core.requests.bucket.recursive.BasicS3ClientRecursiveBucketDeleteParams
+import org.veupathdb.lib.s3.s34k.core.requests.bucket.recursive.BasicS3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.core.requests.client.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3ClientRecursiveBucketDeleteParams
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.client.*
 
 abstract class BasicS3Client(override val defaultRegion: String? = null) : S3Client {
@@ -32,10 +36,13 @@ abstract class BasicS3Client(override val defaultRegion: String? = null) : S3Cli
     deleteBucket(BasicS3BucketDeleteParams(null, defaultRegion).also(action))
 
   override fun deleteBucketRecursive(name: BucketName, region: String?) =
-    deleteBucketRecursive(BasicS3BucketDeleteParams(name, region ?: defaultRegion))
+    deleteBucketRecursive(BasicS3ClientRecursiveBucketDeleteParams().also {
+      it.bucketName = name
+      it.globalRegion = region
+    })
 
-  override fun deleteBucketRecursive(action: S3BucketDeleteParams.() -> Unit) =
-    deleteBucketRecursive(BasicS3BucketDeleteParams(null, defaultRegion).also(action))
+  override fun deleteBucketRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit) =
+    deleteBucketRecursive(BasicS3ClientRecursiveBucketDeleteParams().also(action))
 
   override fun getBucket(name: BucketName, region: String?) =
     getBucket(BasicS3BucketGetParams(name, region ?: defaultRegion))

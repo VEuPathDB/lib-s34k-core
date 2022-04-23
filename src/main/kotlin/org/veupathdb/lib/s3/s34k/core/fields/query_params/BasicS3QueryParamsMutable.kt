@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k.core.fields.query_params
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 
 // TODO: Document me
-class BasicS3QueryParamsMutable : S3QueryParamsMutable, BasicS3QueryParams() {
+open class BasicS3QueryParamsMutable : S3QueryParamsMutable, BasicS3QueryParams() {
 
   override fun addQueryParam(header: String, vararg values: String) =
     addVararg(header, *values)

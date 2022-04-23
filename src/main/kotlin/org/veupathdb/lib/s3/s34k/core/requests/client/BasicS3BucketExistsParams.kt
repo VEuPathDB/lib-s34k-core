@@ -6,7 +6,7 @@ import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.requests.client.S3BucketExistsParams
 
-class BasicS3BucketExistsParams : S3BucketExistsParams,
+open class BasicS3BucketExistsParams : S3BucketExistsParams,
   BasicS3BucketRequestParams {
   override var callback: ((exists: Boolean) -> Unit)?
 

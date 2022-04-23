@@ -8,7 +8,7 @@ import org.veupathdb.lib.s3.s34k.fields.S3MutablePathSet
 import org.veupathdb.lib.s3.s34k.requests.`object`.S3MultiObjectDeleteParams
 
 // TODO: Document me
-class BasicS3MultiObjectDeleteParams : S3MultiObjectDeleteParams, BasicS3RegionRequest {
+open class BasicS3MultiObjectDeleteParams : S3MultiObjectDeleteParams, BasicS3RegionRequest {
 
   override val paths: S3MutablePathSet
 

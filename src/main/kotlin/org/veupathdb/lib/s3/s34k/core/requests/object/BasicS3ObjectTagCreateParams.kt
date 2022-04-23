@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectTagCreateParams
  *
  * @since v0.1.0
  */
-class BasicS3ObjectTagCreateParams : S3ObjectTagCreateParams,
+open class BasicS3ObjectTagCreateParams : S3ObjectTagCreateParams,
   BasicS3ObjectWriteParams {
 
   /**

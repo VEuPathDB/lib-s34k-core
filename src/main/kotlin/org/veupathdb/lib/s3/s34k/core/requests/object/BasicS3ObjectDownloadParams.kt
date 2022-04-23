@@ -6,7 +6,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectDownloadParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3FileObject
 import java.io.File
 
-class BasicS3ObjectDownloadParams : S3ObjectDownloadParams,
+open class BasicS3ObjectDownloadParams : S3ObjectDownloadParams,
   BasicS3ObjectParams {
 
   override var localFile: File?

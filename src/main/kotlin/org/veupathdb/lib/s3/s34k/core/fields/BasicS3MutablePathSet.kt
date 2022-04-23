@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.core.fields
 
 import org.veupathdb.lib.s3.s34k.fields.S3MutablePathSet
 
-class BasicS3MutablePathSet : S3MutablePathSet, BasicS3PathSet {
+open class BasicS3MutablePathSet : S3MutablePathSet, BasicS3PathSet {
 
   constructor() : super()
 

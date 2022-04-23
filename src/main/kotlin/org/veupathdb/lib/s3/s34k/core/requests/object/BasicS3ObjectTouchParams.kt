@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
  *
  * @since v0.1.0
  */
-class BasicS3ObjectTouchParams : S3ObjectTouchParams, BasicS3ObjectWriteParams {
+open class BasicS3ObjectTouchParams : S3ObjectTouchParams, BasicS3ObjectWriteParams {
   /**
    * Content type for the newly created empty object.
    */

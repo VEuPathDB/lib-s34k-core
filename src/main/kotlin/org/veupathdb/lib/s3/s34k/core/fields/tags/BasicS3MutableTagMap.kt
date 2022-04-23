@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k.core.fields.tags
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagMap
 
-class BasicS3MutableTagMap : S3MutableTagMap, BasicS3TagMap() {
+open class BasicS3MutableTagMap : S3MutableTagMap, BasicS3TagMap() {
 
   override fun add(tag: S3Tag) {
     values.add(tag)

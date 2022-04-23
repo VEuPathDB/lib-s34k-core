@@ -15,7 +15,7 @@ import org.veupathdb.lib.s3.s34k.requests.client.S3BucketCreateParams
  *
  * @since v0.1.0
  */
-class BasicS3BucketCreateParams : S3BucketCreateParams, BasicS3BucketWriteRequest {
+open class BasicS3BucketCreateParams : S3BucketCreateParams, BasicS3BucketWriteRequest {
 
   override var callback: ((bucket: S3Bucket) -> Unit)?
 

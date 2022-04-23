@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
  *
  * @since v0.1.0
  */
-class BasicS3DirectoryCreateParams : S3DirectoryCreateParams,
+open class BasicS3DirectoryCreateParams : S3DirectoryCreateParams,
   BasicS3ObjectWriteParams {
 
   override var callback: ((directory: S3Object) -> Unit)?

@@ -13,7 +13,7 @@ import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
  *
  * @since v0.1.0
  */
-class BasicS3BlankTagCreateParams(
+open class BasicS3BlankTagCreateParams(
   region: String? = null,
   override var callback: (() -> Unit)? = null
 ) : S3BlankTagCreateParams, BasicS3RegionRequest(region) {

@@ -6,7 +6,7 @@ import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.requests.client.S3BucketDeleteParams
 
-class BasicS3BucketDeleteParams : S3BucketDeleteParams, BasicS3BucketRequestParams {
+open class BasicS3BucketDeleteParams : S3BucketDeleteParams, BasicS3BucketRequestParams {
 
   override var callback: ((deleted: Boolean) -> Unit)?
 

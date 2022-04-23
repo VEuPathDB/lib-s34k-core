@@ -14,7 +14,7 @@ import org.veupathdb.lib.s3.s34k.requests.client.S3BucketGetParams
  *
  * @since v0.1.0
  */
-class BasicS3BucketGetParams : S3BucketGetParams, BasicS3BucketRequestParams {
+open class BasicS3BucketGetParams : S3BucketGetParams, BasicS3BucketRequestParams {
   override var callback: ((bucket: S3Bucket) -> Unit)?
 
   constructor(

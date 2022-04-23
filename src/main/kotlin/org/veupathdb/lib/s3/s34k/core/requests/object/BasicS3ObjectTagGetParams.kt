@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectTagGetParams
  *
  * @since v0.1.0
  */
-class BasicS3ObjectTagGetParams : S3ObjectTagGetParams, BasicS3ObjectParams {
+open class BasicS3ObjectTagGetParams : S3ObjectTagGetParams, BasicS3ObjectParams {
 
   /**
    * Callback that will be called on successful operation completion.

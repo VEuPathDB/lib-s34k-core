@@ -14,7 +14,7 @@ import java.io.InputStream
  *
  * @since v0.1.0
  */
-class BasicS3StreamingObjectCreateParams : S3StreamingObjectCreateParams,
+open class BasicS3StreamingObjectCreateParams : S3StreamingObjectCreateParams,
   BasicS3ObjectWriteParams {
 
   /**

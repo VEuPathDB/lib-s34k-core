@@ -3,7 +3,7 @@ package org.veupathdb.lib.s3.s34k.core.fields.headers
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 
 // TODO: Document me
-class BasicS3HeadersMutable : S3HeadersMutable, BasicS3Headers() {
+open class BasicS3HeadersMutable : S3HeadersMutable, BasicS3Headers() {
   override fun addHeader(header: String, vararg values: String) =
     addVararg(header, *values)
 

@@ -7,12 +7,14 @@ import org.veupathdb.lib.s3.s34k.core.requests.BasicS3BlankTagCreateParams
 import org.veupathdb.lib.s3.s34k.core.requests.BasicS3BlankTagGetParams
 import org.veupathdb.lib.s3.s34k.core.requests.BasicS3DeleteRequestParams
 import org.veupathdb.lib.s3.s34k.core.requests.bucket.BasicS3BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.core.requests.bucket.recursive.BasicS3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.core.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
 import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
+import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import java.io.File
 import java.io.InputStream
@@ -60,10 +62,10 @@ abstract class BasicS3Bucket(
   // region Delete Recursive
 
   override fun deleteRecursive(): Boolean =
-    deleteRecursive(BasicS3DeleteRequestParams())
+    deleteRecursive(BasicS3RecursiveBucketDeleteParams())
 
-  override fun deleteRecursive(action: S3DeleteRequestParams.() -> Unit) =
-    deleteRecursive(BasicS3DeleteRequestParams().also(action))
+  override fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit) =
+    deleteRecursive(BasicS3RecursiveBucketDeleteParams().also(action))
 
   // endregion Delete Recursive
 
