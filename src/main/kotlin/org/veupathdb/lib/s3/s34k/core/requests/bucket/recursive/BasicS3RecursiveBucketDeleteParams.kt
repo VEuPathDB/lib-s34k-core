@@ -10,11 +10,11 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RBDObjectListParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 
 open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
-  override val globalHeaders: S3HeadersMutable = BasicS3HeadersMutable()
+  override val headers: S3HeadersMutable = BasicS3HeadersMutable()
 
-  override val globalQueryParams: S3QueryParamsMutable = BasicS3QueryParamsMutable()
+  override val queryParams: S3QueryParamsMutable = BasicS3QueryParamsMutable()
 
-  override var globalRegion: String? = null
+  override var region: String? = null
 
   override val bucketDelete: S3RBDBucketDeleteParams = BasicS3RBDBucketDeleteParams()
 

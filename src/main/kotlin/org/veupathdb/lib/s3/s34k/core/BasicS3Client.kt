@@ -38,7 +38,7 @@ abstract class BasicS3Client(override val defaultRegion: String? = null) : S3Cli
   override fun deleteBucketRecursive(name: BucketName, region: String?) =
     deleteBucketRecursive(BasicS3ClientRecursiveBucketDeleteParams().also {
       it.bucketName = name
-      it.globalRegion = region
+      it.region = region
     })
 
   override fun deleteBucketRecursive(action: S3ClientRecursiveBucketDeleteParams.() -> Unit) =
