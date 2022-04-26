@@ -17,12 +17,12 @@ open class BasicS3ObjectTouchParams : S3ObjectTouchParams, BasicS3ObjectWritePar
   /**
    * Content type for the newly created empty object.
    */
-  var contentType: String?
+  override var contentType: String?
 
   /**
    * Callback that will be called on successful operation completion.
    */
-  var callback: ((S3Object) -> Unit)?
+  override var callback: ((S3Object) -> Unit)?
 
   constructor(
     path:        String?               = null,
