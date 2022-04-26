@@ -13,13 +13,13 @@ open class BasicS3BucketList : S3BucketList {
   private val asMap: Map<BucketName, S3Bucket>
 
   override val isEmpty: Boolean
-    get() = TODO("Not yet implemented")
+    get() = asList.isEmpty()
 
   override val isNotEmpty: Boolean
-    get() = TODO("Not yet implemented")
+    get() = asList.isNotEmpty()
 
   override val size: Int
-    get() = TODO("Not yet implemented")
+    get() = asList.size
 
   constructor(input: Collection<S3Bucket>) {
     this.asList = ArrayList(input)
