@@ -7,12 +7,11 @@ import org.veupathdb.lib.s3.s34k.fields.headers.S3Headers
 import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectMeta
 import java.time.OffsetDateTime
 
-class BasicS3ObjectMeta(
+open class BasicS3ObjectMeta(
   bucket:  S3Bucket,
   headers: S3Headers,
   region:  String?,
   path:    String,
-
 
   override val contentType:   String,
   override val eTag:          String?,

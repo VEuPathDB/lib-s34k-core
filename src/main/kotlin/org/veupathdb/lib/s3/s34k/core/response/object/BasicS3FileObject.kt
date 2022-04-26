@@ -8,8 +8,8 @@ import java.io.File
 open class BasicS3FileObject(
   bucket:  S3Bucket,
   headers: S3Headers,
-  path:    String,
   region:  String?,
+  path:    String,
 
   override val localFile: File
 ) : S3FileObject, BasicS3Object(bucket, headers, region, path)
