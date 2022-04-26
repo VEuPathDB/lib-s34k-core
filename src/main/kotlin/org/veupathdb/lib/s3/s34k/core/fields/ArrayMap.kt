@@ -5,26 +5,26 @@ abstract class ArrayMap : Iterable<Pair<String, List<String>>> {
   protected val raw = HashMap<String, Array<String>>()
 
   /**
-   * Number of tag pairs currently in this [TagMap]
+   * Number of tag pairs currently in this [ArrayMap]
    */
   val size
     get() = raw.size
 
   /**
-   * Whether this [TagMap] is empty.
+   * Whether this [ArrayMap] is empty.
    */
   val isEmpty
     get() = raw.isEmpty()
 
   /**
-   * Whether this [TagMap] is not empty.
+   * Whether this [ArrayMap] is not empty.
    */
   val isNotEmpty
     get() = raw.isNotEmpty()
 
   /**
    * Creates and returns a read-only map of the headers contained in this
-   * [MutableHeaderMapImpl].
+   * [ArrayMap].
    */
   fun toMap(): Map<String, List<String>> {
     val out = HashMap<String, List<String>>(raw.size)
