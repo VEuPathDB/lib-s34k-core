@@ -8,27 +8,21 @@ open class BasicS3ObjectDeleteParams : S3ObjectDeleteParams, BasicS3ObjectParams
 
   override var callback: ((deleted: Boolean) -> Unit)?
 
-  override var recursive: Boolean = false
-
   constructor(
     path:      String?       = null,
     region:    String?       = null,
-    recursive: Boolean       = false,
     callback:  ((deleted: Boolean) -> Unit)? = null,
   ) : super(path, region) {
     this.callback = callback
-    this.recursive = recursive
   }
 
   internal constructor(
     path:        String?,
     region:      String?,
-    recursive:   Boolean = false,
     callback:    ((deleted: Boolean) -> Unit)?,
     headers: S3HeadersMutable,
     queryParams: S3QueryParamsMutable
   ) : super(path, region, headers, queryParams) {
     this.callback = callback
-    this.recursive = recursive
   }
 }

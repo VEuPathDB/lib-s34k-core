@@ -108,10 +108,8 @@ abstract class BasicS3Bucket(
 
   // region Delete Object
 
-  override fun deleteObject(path: String, recursive: Boolean) =
-    deleteObject(BasicS3ObjectDeleteParams(path, defaultRegion).also{
-      it.recursive = recursive
-    })
+  override fun deleteObject(path: String) =
+    deleteObject(BasicS3ObjectDeleteParams(path, defaultRegion))
 
   override fun deleteObject(action: S3ObjectDeleteParams.() -> Unit) =
     deleteObject(BasicS3ObjectDeleteParams(null, defaultRegion).also(action))
