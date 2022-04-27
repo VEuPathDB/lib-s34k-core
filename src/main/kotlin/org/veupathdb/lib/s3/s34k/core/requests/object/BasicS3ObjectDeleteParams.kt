@@ -9,10 +9,13 @@ open class BasicS3ObjectDeleteParams : S3ObjectDeleteParams, BasicS3ObjectParams
 
   override var callback: ((deleted: Boolean) -> Unit)?
 
+  override var recursive: Boolean = false
+
   constructor(
-    path:     String?       = null,
-    region:   String?       = null,
-    callback: ((deleted: Boolean) -> Unit)? = null,
+    path:      String?       = null,
+    region:    String?       = null,
+    recursive: Boolean       = false,
+    callback:  ((deleted: Boolean) -> Unit)? = null,
   ) : super(path, region) {
     this.callback = callback
   }
