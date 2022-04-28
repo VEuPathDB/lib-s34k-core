@@ -1,6 +1,7 @@
 = lib-s34k-core
 
 image:https://img.shields.io/badge/jvm-1.8-blue[title="Compatible with JVM 1.8"]
+image:https://img.shields.io/github/v/release/veupathdb/lib-s34k-core[title="Release"]
 
 Basic/abstract implementation of the https://github.com/VEuPathDB/lib-s34k[S34K API] providing
 base/generic functionality that may be used by specific API implementations.
