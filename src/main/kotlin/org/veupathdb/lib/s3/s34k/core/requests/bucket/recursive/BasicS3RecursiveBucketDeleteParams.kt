@@ -10,15 +10,40 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RBDObjectListParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 
 open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
-  override val headers: S3HeadersMutable = BasicS3HeadersMutable()
+  override val headers: S3HeadersMutable
 
-  override val queryParams: S3QueryParamsMutable = BasicS3QueryParamsMutable()
+  override val queryParams: S3QueryParamsMutable
 
   override var region: String? = null
 
-  override val bucketDelete: S3RBDBucketDeleteParams = BasicS3RBDBucketDeleteParams()
+  override val bucketDelete: S3RBDBucketDeleteParams
 
-  override val objectDelete: S3RBDObjectDeleteParams = BasicS3RBDObjectDeleteParams()
+  override val objectDelete: S3RBDObjectDeleteParams
 
-  override val objectFetch: S3RBDObjectListParams = BasicS3RBDObjectListParams()
+  override val objectFetch: S3RBDObjectListParams
+
+  constructor() {
+    headers      = BasicS3HeadersMutable()
+    queryParams  = BasicS3QueryParamsMutable()
+    region       = null
+    bucketDelete = BasicS3RBDBucketDeleteParams()
+    objectDelete = BasicS3RBDObjectDeleteParams()
+    objectFetch  = BasicS3RBDObjectListParams()
+  }
+
+  internal constructor(
+    headers:      S3HeadersMutable,
+    queryParams:  S3QueryParamsMutable,
+    region:       String?,
+    bucketDelete: S3RBDBucketDeleteParams,
+    objectDelete: S3RBDObjectDeleteParams,
+    objectFetch:  S3RBDObjectListParams,
+  ) {
+    this.headers      = headers
+    this.queryParams  = queryParams
+    this.region       = region
+    this.bucketDelete = bucketDelete
+    this.objectDelete = objectDelete
+    this.objectFetch  = objectFetch
+  }
 }
