@@ -4,3 +4,10 @@ image:https://img.shields.io/badge/jvm-1.8-blue[title="Compatible with JVM 1.8"]
 
 Basic/abstract implementation of the https://github.com/VEuPathDB/lib-s34k[S34K API] providing
 base/generic functionality that may be used by specific API implementations.
+
+.Versioning
+NOTE: The versioning pattern for this project follows this pattern:
+  `{core-version}+s34k-{api-version}`. +
+  For example, the initial release of this library was `0.1.0+s34k-0.1.0`. +
+  As patches or updates happen to this library, the library version number will
+  differ from the API version, so for clarity, the API version will be included.

@@ -13,7 +13,15 @@ version = "0.1.0+s34k-0.1.0"
 repositories {
 //  mavenLocal()
   mavenCentral()
-}
+
+  maven {
+    name = "GitHubPackages"
+    url  = uri("https://maven.pkg.github.com/veupathdb/packages")
+    credentials {
+      username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+      password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+    }
+  }}
 
 java {
   sourceCompatibility = JavaVersion.VERSION_1_8
