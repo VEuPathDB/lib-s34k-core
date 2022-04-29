@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.core
 
-import org.veupathdb.lib.s3.s34k.S3Bucket
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import org.veupathdb.lib.s3.s34k.S3Client
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.core.requests.BasicS3BlankTagCreateParams
@@ -9,6 +9,8 @@ import org.veupathdb.lib.s3.s34k.core.requests.BasicS3DeleteRequestParams
 import org.veupathdb.lib.s3.s34k.core.requests.bucket.BasicS3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.core.requests.bucket.recursive.BasicS3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.core.requests.`object`.*
+import org.veupathdb.lib.s3.s34k.core.requests.`object`.directory.BasicS3DirectoryCreateParams
+import org.veupathdb.lib.s3.s34k.core.requests.`object`.directory.BasicS3DirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagCreateParams
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
@@ -16,6 +18,8 @@ import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryCreateParams
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
 import java.io.File
 import java.io.InputStream
 import java.time.OffsetDateTime
@@ -212,6 +216,16 @@ abstract class BasicS3Bucket(
     putDirectory(BasicS3DirectoryCreateParams(null, defaultRegion).also(action))
 
   // endregion Put Directory
+
+  // region Delete Directory
+
+  override fun deleteDirectory(path: String, recursive: Boolean) =
+    deleteDirectory(BasicS3DirectoryDeleteParams(path = path, recursive = recursive))
+
+  override fun deleteDirectory(action: S3DirectoryDeleteParams.() -> Unit) =
+    deleteDirectory(BasicS3DirectoryDeleteParams().also(action))
+
+  // endregion Delete Directory
 
   // region Put Object
 

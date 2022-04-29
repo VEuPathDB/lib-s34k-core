@@ -8,10 +8,10 @@ plugins {
 }
 
 group = "org.veupathdb.lib.s3"
-version = "0.1.0+s34k-0.1.0"
+version = "0.2.0-SNAPSHOT"
 
 repositories {
-//  mavenLocal()
+  mavenLocal()
   mavenCentral()
 
   maven {
@@ -34,7 +34,7 @@ java {
 dependencies {
   implementation(kotlin("stdlib"))
 
-  api("org.veupathdb.lib.s3:s34k:0.1.0")
+  api("org.veupathdb.lib.s3:s34k:0.2.0-SNAPSHOT") { isChanging = true }
 
   testImplementation(kotlin("test"))
 }

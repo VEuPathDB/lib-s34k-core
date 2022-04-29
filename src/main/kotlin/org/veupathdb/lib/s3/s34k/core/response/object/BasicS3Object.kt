@@ -1,11 +1,11 @@
 package org.veupathdb.lib.s3.s34k.core.response.`object`
 
-import org.veupathdb.lib.s3.s34k.S3Bucket
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.core.requests.*
 import org.veupathdb.lib.s3.s34k.core.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.fields.headers.S3Headers
 import org.veupathdb.lib.s3.s34k.requests.*
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 
 open class BasicS3Object(

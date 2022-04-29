@@ -1,9 +1,10 @@
-package org.veupathdb.lib.s3.s34k.core.requests.`object`
+package org.veupathdb.lib.s3.s34k.core.requests.`object`.directory
 
+import org.veupathdb.lib.s3.s34k.core.requests.`object`.BasicS3ObjectWriteParams
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagMap
-import org.veupathdb.lib.s3.s34k.requests.`object`.S3DirectoryCreateParams
+import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryCreateParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3Object
 
 /**
