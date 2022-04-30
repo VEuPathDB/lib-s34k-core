@@ -12,8 +12,7 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectTagCreateParams
  *
  * @since v0.1.0
  */
-open class BasicS3ObjectTagCreateParams : S3ObjectTagCreateParams,
-  BasicS3ObjectWriteParams {
+open class BasicS3ObjectTagCreateParams : S3ObjectTagCreateParams, BasicS3ObjectWriteParams {
 
   /**
    * Callback that will be called on successful operation completion.

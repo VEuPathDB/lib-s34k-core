@@ -6,14 +6,14 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
 
 class BasicS3DirectoryDeleteParams : S3DirectoryDeleteParams, BasicS3ObjectParams {
-  override var callback: ((deleted: Boolean) -> Unit)?
+  override var callback: (() -> Unit)?
   override var recursive: Boolean
 
   constructor(
     path: String? = null,
     region: String? = null,
     recursive: Boolean = true,
-    callback: ((deleted: Boolean) -> Unit)? = null
+    callback: (() -> Unit)? = null
   ) : super(path, region) {
     this.recursive = recursive
     this.callback = callback
@@ -26,7 +26,7 @@ class BasicS3DirectoryDeleteParams : S3DirectoryDeleteParams, BasicS3ObjectParam
     path: String?,
     region: String?,
     recursive: Boolean,
-    callback: ((deleted: Boolean) -> Unit)?,
+    callback: (() -> Unit)?,
     headers: S3HeadersMutable,
     queryParams: S3QueryParamsMutable,
   ) : super(path, region, headers, queryParams) {

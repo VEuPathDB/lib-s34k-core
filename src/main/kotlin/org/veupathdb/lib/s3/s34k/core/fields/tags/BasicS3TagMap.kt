@@ -2,7 +2,7 @@ package org.veupathdb.lib.s3.s34k.core.fields.tags
 
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
-import java.util.Collections
+import java.util.*
 
 open class BasicS3TagMap : S3TagMap {
 

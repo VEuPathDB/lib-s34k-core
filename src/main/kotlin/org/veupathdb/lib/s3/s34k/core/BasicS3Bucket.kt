@@ -1,6 +1,5 @@
 package org.veupathdb.lib.s3.s34k.core
 
-import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import org.veupathdb.lib.s3.s34k.S3Client
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.core.requests.BasicS3BlankTagCreateParams
@@ -20,6 +19,7 @@ import org.veupathdb.lib.s3.s34k.requests.bucket.recursive.S3RecursiveBucketDele
 import org.veupathdb.lib.s3.s34k.requests.`object`.*
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryCreateParams
 import org.veupathdb.lib.s3.s34k.requests.`object`.directory.S3DirectoryDeleteParams
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import java.io.File
 import java.io.InputStream
 import java.time.OffsetDateTime
@@ -65,7 +65,7 @@ abstract class BasicS3Bucket(
 
   // region Delete Recursive
 
-  override fun deleteRecursive(): Boolean =
+  override fun deleteRecursive() =
     deleteRecursive(BasicS3RecursiveBucketDeleteParams())
 
   override fun deleteRecursive(action: S3RecursiveBucketDeleteParams.() -> Unit) =

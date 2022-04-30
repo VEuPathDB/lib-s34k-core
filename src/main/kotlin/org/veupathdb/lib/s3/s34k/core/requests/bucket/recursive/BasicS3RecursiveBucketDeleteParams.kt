@@ -14,7 +14,7 @@ open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
 
   override val queryParams: S3QueryParamsMutable
 
-  override var region: String? = null
+  override var region: String?
 
   override val bucketDelete: S3RBDBucketDeleteParams
 
@@ -22,10 +22,17 @@ open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
 
   override val objectFetch: S3RBDObjectListParams
 
-  constructor() {
+  override var callback: (() -> Unit)?
+
+  constructor(
+    region: String? = null,
+    callback: (() -> Unit)? = null,
+  ) {
+    this.region   = region
+    this.callback = callback
+
     headers      = BasicS3HeadersMutable()
     queryParams  = BasicS3QueryParamsMutable()
-    region       = null
     bucketDelete = BasicS3RBDBucketDeleteParams()
     objectDelete = BasicS3RBDObjectDeleteParams()
     objectFetch  = BasicS3RBDObjectListParams()
@@ -38,6 +45,7 @@ open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
     bucketDelete: S3RBDBucketDeleteParams,
     objectDelete: S3RBDObjectDeleteParams,
     objectFetch:  S3RBDObjectListParams,
+    callback:     (() -> Unit)?,
   ) {
     this.headers      = headers
     this.queryParams  = queryParams
@@ -45,5 +53,6 @@ open class BasicS3RecursiveBucketDeleteParams : S3RecursiveBucketDeleteParams {
     this.bucketDelete = bucketDelete
     this.objectDelete = objectDelete
     this.objectFetch  = objectFetch
+    this.callback     = callback
   }
 }

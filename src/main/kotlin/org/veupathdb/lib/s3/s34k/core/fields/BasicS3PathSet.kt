@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.core.fields
 
 import org.veupathdb.lib.s3.s34k.fields.S3PathSet
-import java.util.Collections
+import java.util.*
 
 open class BasicS3PathSet : S3PathSet {
 

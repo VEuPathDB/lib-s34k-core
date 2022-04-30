@@ -2,7 +2,7 @@
 
 package org.veupathdb.lib.s3.s34k.core.utils
 
-import java.util.Collections
+import java.util.*
 
 internal inline fun <K, V> Map<K, V>.immutable(): Map<K, V> =
   Collections.unmodifiableMap(this)

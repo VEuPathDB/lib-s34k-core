@@ -1,12 +1,12 @@
 package org.veupathdb.lib.s3.s34k.core.requests.client
 
-import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import org.veupathdb.lib.s3.s34k.core.requests.bucket.BasicS3BucketWriteRequest
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagMap
 import org.veupathdb.lib.s3.s34k.requests.client.S3BucketCreateParams
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 
 /**
  * Put Bucket Operation Parameters

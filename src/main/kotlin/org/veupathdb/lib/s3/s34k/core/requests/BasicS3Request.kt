@@ -1,6 +1,5 @@
 package org.veupathdb.lib.s3.s34k.core.requests
 
-import org.slf4j.LoggerFactory
 import org.veupathdb.lib.s3.s34k.core.fields.headers.BasicS3HeadersMutable
 import org.veupathdb.lib.s3.s34k.core.fields.query_params.BasicS3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
@@ -17,8 +16,6 @@ import org.veupathdb.lib.s3.s34k.requests.S3RequestParams
  * @since v0.1.0
  */
 open class BasicS3Request : S3RequestParams {
-
-  private val Log = LoggerFactory.getLogger(this::class.java)
 
   /**
    * Additional headers that will be sent with the S3 operation.

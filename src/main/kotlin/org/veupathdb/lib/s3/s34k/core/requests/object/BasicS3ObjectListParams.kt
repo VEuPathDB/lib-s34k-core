@@ -1,8 +1,8 @@
 package org.veupathdb.lib.s3.s34k.core.requests.`object`
 
+import org.veupathdb.lib.s3.s34k.core.requests.BasicS3RegionRequest
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
-import org.veupathdb.lib.s3.s34k.core.requests.BasicS3RegionRequest
 import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectListParams
 import org.veupathdb.lib.s3.s34k.response.`object`.S3ObjectList
 

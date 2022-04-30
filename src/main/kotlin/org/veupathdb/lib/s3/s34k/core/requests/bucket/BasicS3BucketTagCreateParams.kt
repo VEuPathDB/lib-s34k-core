@@ -1,10 +1,10 @@
 package org.veupathdb.lib.s3.s34k.core.requests.bucket
 
 import org.veupathdb.lib.s3.s34k.core.fields.tags.BasicS3MutableTagMap
+import org.veupathdb.lib.s3.s34k.core.requests.BasicS3RegionRequest
 import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagMap
-import org.veupathdb.lib.s3.s34k.core.requests.BasicS3RegionRequest
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketTagCreateParams
 
 open class BasicS3BucketTagCreateParams : S3BucketTagCreateParams,

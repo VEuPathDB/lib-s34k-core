@@ -6,12 +6,12 @@ import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectDeleteParams
 
 open class BasicS3ObjectDeleteParams : S3ObjectDeleteParams, BasicS3ObjectParams {
 
-  override var callback: ((deleted: Boolean) -> Unit)?
+  override var callback: (() -> Unit)?
 
   constructor(
     path:      String?       = null,
     region:    String?       = null,
-    callback:  ((deleted: Boolean) -> Unit)? = null,
+    callback:  (() -> Unit)? = null,
   ) : super(path, region) {
     this.callback = callback
   }
@@ -19,7 +19,7 @@ open class BasicS3ObjectDeleteParams : S3ObjectDeleteParams, BasicS3ObjectParams
   internal constructor(
     path:        String?,
     region:      String?,
-    callback:    ((deleted: Boolean) -> Unit)?,
+    callback:    (() -> Unit)?,
     headers: S3HeadersMutable,
     queryParams: S3QueryParamsMutable
   ) : super(path, region, headers, queryParams) {

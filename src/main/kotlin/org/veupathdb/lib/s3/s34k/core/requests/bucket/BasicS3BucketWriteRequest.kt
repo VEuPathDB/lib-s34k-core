@@ -7,8 +7,7 @@ import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagMap
 import org.veupathdb.lib.s3.s34k.requests.bucket.S3BucketWriteRequestParams
 
-open class BasicS3BucketWriteRequest : S3BucketWriteRequestParams,
-  BasicS3BucketRequestParams {
+open class BasicS3BucketWriteRequest : S3BucketWriteRequestParams, BasicS3BucketRequestParams {
 
   final override val tags: S3MutableTagMap
 

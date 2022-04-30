@@ -7,8 +7,7 @@ import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.`object`.S3ObjectTagDeleteParams
 
-open class BasicS3ObjectTagDeleteParams : S3ObjectTagDeleteParams,
-  BasicS3ObjectParams {
+open class BasicS3ObjectTagDeleteParams : S3ObjectTagDeleteParams, BasicS3ObjectParams {
 
   override val tags: S3MutableTagSet
 

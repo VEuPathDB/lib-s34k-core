@@ -7,7 +7,7 @@ import org.veupathdb.lib.s3.s34k.requests.S3DeleteRequestParams
 
 open class BasicS3DeleteRequestParams(
   region: String? = null,
-  override var callback: ((Boolean) -> Unit)? = null
+  override var callback: (() -> Unit)? = null
 ) : S3DeleteRequestParams, BasicS3RegionRequest(region) {
 
   override fun toBucketDeleteParams(name: BucketName) =

@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.core.fields.tags
 
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagSet
-import java.util.Collections
+import java.util.*
 
 open class BasicS3TagSet : S3TagSet {
 

@@ -1,9 +1,9 @@
 package org.veupathdb.lib.s3.s34k.core.response
 
-import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import org.veupathdb.lib.s3.s34k.core.utils.immutable
 import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.response.S3BucketList
+import org.veupathdb.lib.s3.s34k.response.bucket.S3Bucket
 import java.util.stream.Stream
 
 open class BasicS3BucketList : S3BucketList {
