@@ -1,8 +1,10 @@
 package org.veupathdb.lib.s3.s34k.core.requests
 
+import org.veupathdb.lib.s3.s34k.core.fields.tags.BasicS3MutableTagSet
 import org.veupathdb.lib.s3.s34k.core.requests.bucket.BasicS3BucketTagGetParams
 import org.veupathdb.lib.s3.s34k.core.requests.`object`.BasicS3ObjectTagGetParams
 import org.veupathdb.lib.s3.s34k.fields.BucketName
+import org.veupathdb.lib.s3.s34k.fields.tags.S3MutableTagSet
 import org.veupathdb.lib.s3.s34k.fields.tags.S3TagMap
 import org.veupathdb.lib.s3.s34k.requests.S3BlankTagGetParams
 
@@ -18,9 +20,11 @@ open class BasicS3BlankTagGetParams(
   override var callback: ((S3TagMap) -> Unit)? = null
 ) : S3BlankTagGetParams, BasicS3RegionRequest(region) {
 
+  override val tags: S3MutableTagSet = BasicS3MutableTagSet()
+
   override fun toObjectTagGetParams(path: String) =
-    BasicS3ObjectTagGetParams(path, region, callback, headers, queryParams)
+    BasicS3ObjectTagGetParams(path, region, tags, callback, headers, queryParams)
 
   override fun toBucketTagGetParams(bucket: BucketName) =
-    BasicS3BucketTagGetParams(bucket, region, callback, headers, queryParams)
+    BasicS3BucketTagGetParams(bucket, region, tags, callback, headers, queryParams)
 }
