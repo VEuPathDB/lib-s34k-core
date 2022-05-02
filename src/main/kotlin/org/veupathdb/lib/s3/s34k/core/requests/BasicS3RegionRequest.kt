@@ -4,7 +4,6 @@ import org.veupathdb.lib.s3.s34k.fields.headers.S3HeadersMutable
 import org.veupathdb.lib.s3.s34k.fields.query_params.S3QueryParamsMutable
 import org.veupathdb.lib.s3.s34k.requests.S3RegionRequestParams
 
-// TODO: Document me
 open class BasicS3RegionRequest : S3RegionRequestParams, BasicS3Request {
 
   final override var region: String?
