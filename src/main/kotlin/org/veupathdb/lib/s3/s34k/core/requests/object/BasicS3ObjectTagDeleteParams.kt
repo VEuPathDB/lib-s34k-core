@@ -13,12 +13,12 @@ open class BasicS3ObjectTagDeleteParams : S3ObjectTagDeleteParams, BasicS3Object
 
   override var allTags: Boolean = false
 
-  override var callback: ((S3TagMap) -> Unit)? = null
+  override var callback: (() -> Unit)? = null
 
   constructor(
     path:     String?               = null,
     region:   String?               = null,
-    callback: ((S3TagMap) -> Unit)? = null,
+    callback: (() -> Unit)? = null,
   ) : super(path, region) {
     this.callback = callback
     this.tags     = BasicS3MutableTagSet()
@@ -29,7 +29,7 @@ open class BasicS3ObjectTagDeleteParams : S3ObjectTagDeleteParams, BasicS3Object
     region:      String?,
     tags:        S3MutableTagSet,
     allTags:     Boolean,
-    callback:    ((S3TagMap) -> Unit)?,
+    callback:    (() -> Unit)?,
     headers:     S3HeadersMutable,
     queryParams: S3QueryParamsMutable,
   ) : super(path, region, headers, queryParams) {
