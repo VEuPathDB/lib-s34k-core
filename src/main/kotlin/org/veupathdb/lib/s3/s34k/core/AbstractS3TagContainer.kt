@@ -36,6 +36,8 @@ abstract class AbstractS3TagContainer : S3TagContainer {
 
   override fun put(vararg tags: S3Tag) = put(BasicS3TagPutParams().also { it.tags.add(tags.asList()) })
 
+  override fun put(vararg tags: Pair<String, String>) = put(BasicS3TagPutParams().also { it.tags.add(*tags) })
+
   override fun put(tags: Iterable<S3Tag>) = put(BasicS3TagPutParams().also { it.tags.add(tags) })
 
   override fun put(tags: S3TagMap) = put(BasicS3TagPutParams().also { it.tags.add(tags.toMap()) })
