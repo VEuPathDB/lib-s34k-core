@@ -36,6 +36,7 @@ dependencies {
 
   api("org.veupathdb.lib.s3:s34k:0.3.0-SNAPSHOT") { isChanging = true }
 
+  testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
   testImplementation(kotlin("test"))
 }
 
