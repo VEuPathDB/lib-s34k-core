@@ -34,13 +34,13 @@ abstract class AbstractS3TagContainer : S3TagContainer {
 
   override fun put(key: String, value: String) = put(BasicS3TagPutParams().also { it.tags[key] = value })
 
-  override fun put(vararg tags: S3Tag) = put(BasicS3TagCreateParams().also { it.tags.add(tags.asList()) })
+  override fun put(vararg tags: S3Tag) = put(BasicS3TagPutParams().also { it.tags.add(tags.asList()) })
 
-  override fun put(tags: Iterable<S3Tag>) = put(BasicS3TagCreateParams().also { it.tags.add(tags) })
+  override fun put(tags: Iterable<S3Tag>) = put(BasicS3TagPutParams().also { it.tags.add(tags) })
 
-  override fun put(tags: S3TagMap) = put(BasicS3TagCreateParams().also { it.tags.add(tags.toMap()) })
+  override fun put(tags: S3TagMap) = put(BasicS3TagPutParams().also { it.tags.add(tags.toMap()) })
 
-  override fun put(tags: Map<String, String>) = put(BasicS3TagCreateParams().also { it.tags.add(tags) })
+  override fun put(tags: Map<String, String>) = put(BasicS3TagPutParams().also { it.tags.add(tags) })
 
-  override fun put(action: S3TagCreateParams.() -> Unit) = put(BasicS3TagCreateParams().also(action))
+  override fun put(action: S3TagPutParams.() -> Unit) = put(BasicS3TagPutParams().also(action))
 }

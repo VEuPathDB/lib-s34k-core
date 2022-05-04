@@ -67,7 +67,7 @@ abstract class AbstractS3ObjectContainer : S3ObjectContainer {
   override fun put(path: String, stream: InputStream) =
     put(path, BasicS3StreamingObjectPutParams(stream = stream))
 
-  override fun put(path: String, action: S3StreamingObjectCreateParams.() -> Unit) =
+  override fun put(path: String, action: S3StreamingObjectPutParams.() -> Unit) =
     put(path, BasicS3StreamingObjectPutParams().also(action))
 
 

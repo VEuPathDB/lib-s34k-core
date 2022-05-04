@@ -7,4 +7,4 @@ open class BasicS3ObjectTouchParams(
   region: String? = null,
   override var contentType: String? = null,
   override var callback: ((handle: S3Object) -> Unit)? = null
-) : S3ObjectTouchParams, BasicS3ObjectWriteParams()
+) : S3ObjectTouchParams, BasicS3ObjectWriteParams(region)
