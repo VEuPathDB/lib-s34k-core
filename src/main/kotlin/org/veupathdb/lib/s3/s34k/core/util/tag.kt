@@ -2,7 +2,7 @@
 
 package org.veupathdb.lib.s3.s34k.core.util
 
-import org.veupathdb.lib.s3.s34k.S3Tag
+import org.veupathdb.lib.s3.s34k.Tag
 
 private const val MaxTagName  = 128
 private const val MaxTagValue = 256
@@ -20,9 +20,9 @@ internal inline fun String.tagValue() =
   else
     this
 
-internal inline fun Map.Entry<String, String>.toTag() = S3Tag(key, value)
+internal inline fun Map.Entry<String, String>.toTag() = Tag(key, value)
 
-internal inline fun Pair<String, String>.toTag() = S3Tag(first, second)
+internal inline fun Pair<String, String>.toTag() = Tag(first, second)
 
 /**
  * Attempts to add the given array of tags to the receiver map.
@@ -68,7 +68,7 @@ internal inline fun MutableMap<String, String>.addTags(tags: Array<out Pair<Stri
  * @throws IllegalStateException If adding the given tags would increase the
  * receiver map size to a value greater than [MaxTags].
  */
-internal inline fun MutableMap<String, String>.addTags(tags: Array<out S3Tag>) {
+internal inline fun MutableMap<String, String>.addTags(tags: Array<out Tag>) {
   if (tags.size > MaxTags)
     throw IllegalArgumentException("Cannot add more than $MaxTags tags to a tag map.")
 
