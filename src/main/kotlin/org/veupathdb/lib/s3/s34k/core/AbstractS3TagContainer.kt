@@ -25,6 +25,11 @@ abstract class AbstractS3TagContainer : S3TagContainer {
   override fun delete(action: S3TagDeleteParams.() -> Unit) = delete(BasicS3TagDeleteParams().also(action))
 
 
+  override fun deleteAll() = deleteAll(BasicS3DeleteAllTagsParams())
+
+  override fun deleteAll(action: S3DeleteAllTagsParams.() -> Unit) = deleteAll(BasicS3DeleteAllTagsParams().also(action))
+
+
   override fun get(vararg keys: String) = get(BasicS3TagGetParams().also { it.tags.add(keys.asList()) })
 
   override fun get(keys: Iterable<String>) = get(BasicS3TagGetParams().also { it.tags.add(keys) })
