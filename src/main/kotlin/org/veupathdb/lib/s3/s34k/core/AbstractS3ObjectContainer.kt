@@ -13,7 +13,7 @@ import java.io.InputStream
 abstract class AbstractS3ObjectContainer : S3ObjectContainer {
 
   override fun contains(path: String) =
-    contains(path, BasicS3ObjectExistsParams())
+    contains(path, BasicObjectExistsParams())
 
   override fun contains(path: String, action: S3ObjectExistsParams.() -> Unit) =
     contains(path, BasicS3ObjectExistsParams().also(action))
@@ -27,13 +27,13 @@ abstract class AbstractS3ObjectContainer : S3ObjectContainer {
 
 
   override fun deleteAll(vararg paths: String) =
-    deleteAll(BasicS3MultiObjectDeleteParams().also { it.paths.add(paths.asList()) })
+    deleteAll(BasicMultiObjectDeleteParams().also { it.paths.add(paths.asList()) })
 
   override fun deleteAll(paths: Iterable<String>) =
-    deleteAll(BasicS3MultiObjectDeleteParams().also { it.paths.add(paths) })
+    deleteAll(BasicMultiObjectDeleteParams().also { it.paths.add(paths) })
 
   override fun deleteAll(action: S3MultiObjectDeleteParams.() -> Unit) =
-    deleteAll(BasicS3MultiObjectDeleteParams().also(action))
+    deleteAll(BasicMultiObjectDeleteParams().also(action))
 
 
   override fun download(path: String, localFile: File) =
@@ -44,21 +44,21 @@ abstract class AbstractS3ObjectContainer : S3ObjectContainer {
 
 
   override fun get(path: String) =
-    get(path, BasicS3ObjectGetParams())
+    get(path, BasicObjectGetParams())
 
   override fun get(path: String, action: S3ObjectGetParams.() -> Unit) =
     get(path, BasicS3ObjectGetParams().also(action))
 
 
   override fun listAll() =
-    listAll(BasicS3ObjectListParams())
+    listAll(BasicObjectListParams())
 
   override fun listAll(action: S3ObjectListParams.() -> Unit) =
     listAll(BasicS3ObjectListParams().also(action))
 
 
   override fun open(path: String) =
-    open(path, BasicS3ObjectOpenParams())
+    open(path, BasicObjectOpenParams())
 
   override fun open(path: String, action: S3ObjectOpenParams.() -> Unit) =
     open(path, BasicS3ObjectOpenParams().also(action))
@@ -79,17 +79,17 @@ abstract class AbstractS3ObjectContainer : S3ObjectContainer {
 
 
   override fun stat(path: String) =
-    stat(path, BasicS3ObjectStatParams())
+    stat(path, BasicObjectStatParams())
 
   override fun stat(path: String, action: S3ObjectStatParams.() -> Unit) =
-    stat(path, BasicS3ObjectStatParams().also(action))
+    stat(path, BasicObjectStatParams().also(action))
 
 
   override fun touch(path: String) =
-    touch(path, BasicS3ObjectTouchParams())
+    touch(path, BasicObjectTouchParams())
 
   override fun touch(path: String, action: S3ObjectTouchParams.() -> Unit) =
-    touch(path, BasicS3ObjectTouchParams().also(action))
+    touch(path, BasicObjectTouchParams().also(action))
 
 
   override fun upload(path: String, file: File) =
