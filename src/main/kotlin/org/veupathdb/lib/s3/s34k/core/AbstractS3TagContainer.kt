@@ -2,9 +2,9 @@ package org.veupathdb.lib.s3.s34k.core
 
 import org.veupathdb.lib.s3.s34k.S3Tag
 import org.veupathdb.lib.s3.s34k.S3TagContainer
-import org.veupathdb.lib.s3.s34k.core.params.*
+import org.veupathdb.lib.s3.s34k.core.params.tag.*
 import org.veupathdb.lib.s3.s34k.fields.S3TagMap
-import org.veupathdb.lib.s3.s34k.params.*
+import org.veupathdb.lib.s3.s34k.params.tag.*
 
 abstract class AbstractS3TagContainer : S3TagContainer {
 
