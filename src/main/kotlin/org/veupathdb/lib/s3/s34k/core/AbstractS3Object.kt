@@ -12,7 +12,7 @@ import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
 
 abstract class AbstractS3Object(
   override val path: String,
-  override val region: String,
+  override val region: String?,
   override val headers: Headers,
   override val bucket: Bucket,
 ) : S3Object {
