@@ -8,5 +8,5 @@ open class BasicObjectResponse(
   override val path: String,
   override val bucket: Bucket,
   override val headers: Headers,
-  override val region: String?
+  override val region: String
 ) : ObjectResponse
