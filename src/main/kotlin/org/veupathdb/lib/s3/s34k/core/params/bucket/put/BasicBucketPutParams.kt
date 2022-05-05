@@ -11,7 +11,9 @@ open class BasicBucketPutParams(
 ) : BucketPutParams, BasicRegionRequestParams(region) {
   override val tags = BasicMutableTagMap()
 
-  override val getParams = BasicBPGetParams()
-
   override val putParams = BasicBPPutParams()
+
+  override val tagPutParams = BasicBPTagPutParams()
+
+  override val getParams = BasicBPGetParams()
 }
