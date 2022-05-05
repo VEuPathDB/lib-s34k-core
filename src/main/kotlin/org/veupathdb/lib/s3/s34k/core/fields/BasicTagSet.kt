@@ -1,7 +1,9 @@
 package org.veupathdb.lib.s3.s34k.core.fields
 
-import org.veupathdb.lib.s3.s34k.core.util.immutable
+import org.veupathdb.lib.s3.s34k.core.util.toImmutable
+import org.veupathdb.lib.s3.s34k.core.util.toImmutableSet
 import org.veupathdb.lib.s3.s34k.fields.TagSet
+import java.util.stream.Stream
 
 open class BasicTagSet : TagSet {
 
@@ -13,9 +15,13 @@ open class BasicTagSet : TagSet {
 
   override val size get() = raw.size
 
-  constructor() { raw = emptySet() }
+  constructor() {
+    raw = emptySet()
+  }
 
-  constructor(tags: Iterable<String>) { raw = tags.toSet().immutable() }
+  constructor(tags: Iterable<String>) {
+    raw = tags.toImmutableSet()
+  }
 
   override fun contains(tag: String) = tag in raw
 
@@ -23,5 +29,9 @@ open class BasicTagSet : TagSet {
 
   override fun toList() = ArrayList(raw)
 
-  override fun toSet() = raw.immutable()
+  override fun toSet() = raw.toImmutable()
+
+  override fun stream(): Stream<String> {
+    TODO("Not yet implemented")
+  }
 }

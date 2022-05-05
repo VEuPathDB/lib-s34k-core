@@ -1,7 +1,8 @@
 package org.veupathdb.lib.s3.s34k.core.fields
 
 import org.veupathdb.lib.s3.s34k.Tag
-import org.veupathdb.lib.s3.s34k.core.util.immutable
+import org.veupathdb.lib.s3.s34k.core.util.asImmutable
+import org.veupathdb.lib.s3.s34k.core.util.toImmutable
 import org.veupathdb.lib.s3.s34k.core.util.toTag
 import org.veupathdb.lib.s3.s34k.fields.TagMap
 import java.util.stream.Stream
@@ -24,19 +25,15 @@ open class BasicTagMap : TagMap {
   }
 
   constructor(tags: Map<String, String>) {
-    raw = HashMap(tags).immutable()
+    raw = tags.toImmutable()
   }
 
   constructor(tags: Iterable<Tag>) {
-    val tmp = HashMap<String, String>(10)
-    tags.forEach { (k, v) -> tmp[k] = v }
-    raw = tmp.immutable()
+    raw = HashMap<String, String>(10).also { tags.forEach { (k, v) -> it[k] = v } }.asImmutable()
   }
 
   internal constructor(tags: Set<Map.Entry<String, String>>) {
-    val tmp = HashMap<String, String>(tags.size)
-    tags.forEach { (k, v) -> tmp[k] = v }
-    raw = tmp.immutable()
+    raw = HashMap<String, String>(tags.size).also { tags.forEach { (k, v) -> it[k] = v } }.asImmutable()
   }
 
   override fun get(key: String) = raw[key]

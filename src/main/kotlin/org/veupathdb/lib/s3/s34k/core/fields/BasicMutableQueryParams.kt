@@ -2,8 +2,13 @@ package org.veupathdb.lib.s3.s34k.core.fields
 
 import org.veupathdb.lib.s3.s34k.core.util.*
 import org.veupathdb.lib.s3.s34k.fields.MutableQueryParams
+import java.util.concurrent.locks.ReentrantReadWriteLock
+import kotlin.concurrent.read
+import kotlin.concurrent.write
 
 open class BasicMutableQueryParams : MutableQueryParams {
+
+  private val lock = ReentrantReadWriteLock()
 
   private val raw: MutableMap<String, Array<String>>
 
@@ -14,31 +19,45 @@ open class BasicMutableQueryParams : MutableQueryParams {
   override val size: Int get() = raw.size
 
   constructor() {
-    raw = HashMap(2)
+    raw = LinkedHashMap(2)
   }
 
   constructor(params: Map<String, Iterable<String>>) {
-    raw = HashMap(params.size)
-    params.forEach { (k, v) -> raw[k] = v.toArray() }
+    raw = LinkedHashMap<String, Array<String>>(params.size).also { params.forEach { (k, v) -> it[k] = v.toArray() } }
   }
 
-  override fun addQueryParam(param: String, vararg values: String) = raw.merge(param, values)
+  // region Write
 
-  override fun addQueryParam(param: String, values: Iterable<String>) = raw.merge(param, values)
+  override fun addQueryParam(param: String, vararg values: String) =
+    lock.write { raw.merge(param, values) }
+
+  override fun addQueryParam(param: String, values: Iterable<String>) =
+    lock.write { raw.merge(param, values) }
 
   override fun addQueryParams(vararg params: Pair<String, String>) =
-    params.forEach { (k, v) -> addQueryParam(k, v) }
+    lock.write { params.forEach { (k, v) -> raw.merge(k, arrayOf(v)) } }
 
   override fun addQueryParams(params: Map<String, Iterable<String>>) =
-    params.forEach { (k, v) -> addQueryParam(k, v) }
+    lock.write { params.forEach { (k, v) -> raw.merge(k, v) } }
 
-  override fun get(queryParam: String) = raw[queryParam]?.toList()
+  // endregion Write
 
-  override fun iterator() = raw.toPairIterator()
+  // region Read
 
-  override fun stream() = raw.toPairStream()
+  override fun get(queryParam: String) =
+    lock.read { raw[queryParam]?.toList() }
 
-  override fun toImmutable() = BasicQueryParams(raw.entries)
+  override fun iterator() =
+    lock.read { raw.toPairIterator() }
 
-  override fun toMap() = raw.toListMap()
+  override fun stream() =
+    lock.read { raw.toPairStream() }
+
+  override fun toImmutable() =
+    lock.read { BasicQueryParams(raw.entries) }
+
+  override fun toMap() =
+    lock.read { raw.toListMap() }
+
+  // endregion Read
 }

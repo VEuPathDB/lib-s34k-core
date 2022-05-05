@@ -3,10 +3,15 @@ package org.veupathdb.lib.s3.s34k.core.fields
 import org.veupathdb.lib.s3.s34k.Tag
 import org.veupathdb.lib.s3.s34k.core.util.*
 import org.veupathdb.lib.s3.s34k.fields.MutableTagMap
+import java.util.concurrent.locks.ReentrantReadWriteLock
 import java.util.stream.Collectors
 import java.util.stream.Stream
+import kotlin.concurrent.read
+import kotlin.concurrent.write
 
 open class BasicMutableTagMap : MutableTagMap {
+
+  private val lock = ReentrantReadWriteLock()
 
   private val raw: MutableMap<String, String>
 
@@ -20,42 +25,71 @@ open class BasicMutableTagMap : MutableTagMap {
     get() = raw.size
 
   constructor() {
-    raw = HashMap(10)
+    raw = LinkedHashMap(10)
   }
 
   constructor(tags: Map<String, String>) {
-    raw = HashMap(tags)
+    raw = LinkedHashMap(tags)
   }
 
-  override fun add(vararg tags: Pair<String, String>) = raw.addTags(tags)
+  // region Write
 
-  override fun add(vararg tags: Tag) = raw.addTags(tags)
+  override fun add(vararg tags: Pair<String, String>) =
+    lock.write { raw.addTags(tags) }
 
-  override fun add(key: String, value: String) = raw.addTag(key, value)
+  override fun add(vararg tags: Tag) =
+    lock.write { raw.addTags(tags) }
 
-  override fun add(tags: Iterable<Tag>) = raw.addTags(tags.toArray(10))
+  override fun add(key: String, value: String) =
+    lock.write { raw.addTag(key, value) }
 
-  override fun add(tags: Map<String, String>) = raw.addTags(tags)
+  override fun add(tags: Iterable<Tag>) =
+    lock.write { raw.addTags(tags.toArray(10)) }
 
-  override fun add(tag: Tag) = raw.addTag(tag.key, tag.value)
+  override fun add(tags: Map<String, String>) =
+    lock.write { raw.addTags(tags) }
 
-  override fun get(key: String) = raw[key]
+  override fun add(tag: Tag) =
+    lock.write { raw.addTag(tag.key, tag.value) }
 
-  override fun iterator(): Iterator<Tag> = stream().iterator()
 
-  override fun plusAssign(tag: Pair<String, String>) = raw.addTag(tag.first, tag.second)
+  override fun plusAssign(tag: Pair<String, String>) =
+    lock.write { raw.addTag(tag.first, tag.second) }
 
-  override fun plusAssign(tags: Map<String, String>) = raw.addTags(tags)
+  override fun plusAssign(tags: Map<String, String>) =
+    lock.write { raw.addTags(tags) }
 
-  override fun plusAssign(tag: Tag) = raw.addTag(tag.key, tag.value)
+  override fun plusAssign(tag: Tag) =
+    lock.write { raw.addTag(tag.key, tag.value) }
 
-  override fun stream(): Stream<Tag> = raw.entries.stream().map { (k, v) -> Tag(k, v) }
+  // endregion Write
 
-  override fun toImmutable() = BasicTagMap(raw.entries)
+  // region Read
 
-  override fun toList(): List<Tag> = stream().collect(Collectors.toList())
+  override fun get(key: String) =
+    lock.read { raw[key] }
 
-  override fun toMap(): Map<String, String> = HashMap(raw)
+  // No need to lock as stream() does it.
+  override fun iterator(): Iterator<Tag> =
+    stream().iterator()
 
-  override fun toSet(): Set<Tag> = stream().collect(Collectors.toSet())
+  override fun stream(): Stream<Tag> =
+    lock.read { raw.toImmutable().entries.stream().map { (k, v) -> Tag(k, v) } }
+
+  override fun toImmutable() =
+    lock.read { BasicTagMap(raw.entries) }
+
+  // No need to lock as stream() does it.
+  override fun toList(): List<Tag> =
+    stream().collect(Collectors.toList())
+
+  override fun toMap(): Map<String, String> =
+    lock.read { raw.toImmutable() }
+
+  // No need to lock as stream() does it.
+  override fun toSet(): Set<Tag> =
+    stream().collect(Collectors.toSet())
+
+  // endregion Read
+
 }

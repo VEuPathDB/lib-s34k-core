@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.core.fields
 
-import org.veupathdb.lib.s3.s34k.core.util.immutable
+import org.veupathdb.lib.s3.s34k.core.util.toImmutable
 import org.veupathdb.lib.s3.s34k.core.util.toSet
 import org.veupathdb.lib.s3.s34k.fields.PathSet
 
@@ -22,9 +22,9 @@ open class BasicPathSet : PathSet {
 
   constructor(paths: Iterable<String>) {
     raw = if (paths is Collection)
-      HashSet(paths).immutable()
+      HashSet(paths).toImmutable()
     else
-      paths.toSet().immutable()
+      paths.toSet().toImmutable()
   }
 
   override fun contains(path: String) = path in raw
@@ -34,4 +34,6 @@ open class BasicPathSet : PathSet {
   override fun toList() = ArrayList(raw)
 
   override fun toSet() = raw
+
+  override fun stream() = raw.stream()
 }

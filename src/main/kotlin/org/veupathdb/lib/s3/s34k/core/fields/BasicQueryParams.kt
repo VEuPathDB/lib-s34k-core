@@ -23,13 +23,13 @@ open class BasicQueryParams : QueryParams {
   constructor(params: Map<String, Iterable<String>>) {
     val tmp = HashMap<String, Array<String>>(params.size)
     params.forEach { (k, v) -> tmp[k] = v.toArray() }
-    raw = tmp.immutable()
+    raw = tmp.toImmutable()
   }
 
   internal constructor(vals: Set<Map.Entry<String, Array<String>>>) {
     val tmp = HashMap<String, Array<String>>(vals.size)
     vals.forEach { (k, v) -> tmp[k] = v.copy() }
-    raw = tmp.immutable()
+    raw = tmp.toImmutable()
   }
 
   override fun get(queryParam: String) = raw[queryParam]?.toList()

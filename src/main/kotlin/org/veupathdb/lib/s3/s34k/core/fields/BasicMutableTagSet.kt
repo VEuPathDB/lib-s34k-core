@@ -1,11 +1,16 @@
 package org.veupathdb.lib.s3.s34k.core.fields
 
-import org.veupathdb.lib.s3.s34k.core.util.immutable
+import org.veupathdb.lib.s3.s34k.core.util.toImmutable
 import org.veupathdb.lib.s3.s34k.core.util.tagName
 import org.veupathdb.lib.s3.s34k.core.util.toSet
 import org.veupathdb.lib.s3.s34k.fields.MutableTagSet
+import java.util.concurrent.locks.ReentrantReadWriteLock
+import kotlin.concurrent.read
+import kotlin.concurrent.write
 
 open class BasicMutableTagSet : MutableTagSet {
+
+  private val lock = ReentrantReadWriteLock()
 
   private val raw: MutableSet<String>
 
@@ -19,28 +24,42 @@ open class BasicMutableTagSet : MutableTagSet {
     get() = raw.size
 
   constructor() {
-    raw = HashSet(10)
+    lock.write { raw = LinkedHashSet(10) }
   }
 
   constructor(tags: Iterable<String>) {
-    raw = tags.toSet(10)
+    lock.write { raw = tags.toSet(10) }
   }
 
-  override fun contains(tag: String) = tag in raw
+  override fun contains(tag: String) =
+    lock.read { tag in raw }
 
-  override fun iterator() = raw.iterator()
+  override fun iterator() =
+    lock.read { ArrayList(raw) }.iterator()
 
-  override fun toImmutable() = BasicTagSet(raw)
+  override fun toImmutable() =
+    lock.read { BasicTagSet(raw) }
 
-  override fun toList() = ArrayList(raw)
+  override fun toList() =
+    lock.read { ArrayList(raw) }
 
-  override fun toSet() = raw.immutable()
+  override fun toSet() =
+    lock.read { raw.toImmutable() }
 
-  override fun add(vararg tags: String) = tags.forEach { raw.add(it.tagName()) }
+  override fun add(vararg tags: String) =
+    lock.write { tags.forEach { raw.add(it.tagName()) } }
 
-  override fun add(tag: String) { raw.add(tag.tagName()) }
+  override fun add(tag: String) {
+    lock.write { raw.add(tag.tagName()) }
+  }
 
-  override fun add(tags: Iterable<String>) = tags.forEach { raw.add(it.tagName()) }
+  override fun add(tags: Iterable<String>) =
+    lock.write { tags.forEach { raw.add(it.tagName()) } }
 
-  override fun plusAssign(tag: String) { raw.add(tag.tagName()) }
+  override fun plusAssign(tag: String) {
+    lock.write { raw.add(tag.tagName()) }
+  }
+
+  override fun stream() =
+    lock.read { ArrayList(raw) }.stream()
 }

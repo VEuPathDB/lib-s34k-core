@@ -2,6 +2,7 @@
 
 package org.veupathdb.lib.s3.s34k.core.util
 
+import java.util.Collections
 import java.util.stream.Stream
 import java.util.stream.StreamSupport
 
@@ -19,15 +20,14 @@ internal inline fun <reified R> Iterable<R>.toArray(chunkSize: Int = 32): Array<
   return tmp.toArray(arrayOfNulls<R>(tmp.size))
 }
 
-internal inline fun <R> Iterable<R>.toSet(chunkSize: Int = 32): MutableSet<R> {
+internal inline fun <R> Iterable<R>.toSet(chunkSize: Int = 32): MutableSet<R> =
   if (this is Collection)
-    return HashSet(this)
+    LinkedHashSet(this)
+  else
+    LinkedHashSet<R>(chunkSize).also { forEach(it::add) }
 
-  val out = HashSet<R>(chunkSize)
-
-  forEach(out::add)
-
-  return out
+internal inline fun <R> Iterable<R>.toImmutableSet(chunkSize: Int = 10): Set<R> {
+  return Collections.unmodifiableSet(toSet(chunkSize))
 }
 
 internal inline fun <R> Iterable<R>.stream(): Stream<R> =
