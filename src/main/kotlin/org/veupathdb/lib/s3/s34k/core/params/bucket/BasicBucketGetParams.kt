@@ -6,5 +6,5 @@ import org.veupathdb.lib.s3.s34k.params.bucket.BucketGetParams
 
 open class BasicBucketGetParams(
   region: String? = null,
-  override var callback: ((bucket: Bucket) -> Unit)? = null
+  override var callback: ((bucket: Bucket?) -> Unit)? = null
 ) : BucketGetParams, BasicRegionRequestParams(region)
