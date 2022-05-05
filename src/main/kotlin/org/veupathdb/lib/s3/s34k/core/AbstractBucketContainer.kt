@@ -4,11 +4,14 @@ import org.veupathdb.lib.s3.s34k.BucketContainer
 import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.core.params.bucket.*
 import org.veupathdb.lib.s3.s34k.core.params.bucket.put.BasicBucketPutParams
+import org.veupathdb.lib.s3.s34k.core.params.bucket.put.BasicBucketUpsertParams
 import org.veupathdb.lib.s3.s34k.core.params.bucket.recursive.BasicRecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.*
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
+import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketUpsertParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 
+@Suppress("unused")
 abstract class AbstractBucketContainer : BucketContainer {
 
   override fun create(name: BucketName) =
@@ -19,10 +22,10 @@ abstract class AbstractBucketContainer : BucketContainer {
 
 
   override fun createIfNotExists(name: BucketName) =
-    createIfNotExists(name, BasicBucketPutParams())
+    createIfNotExists(name, BasicBucketUpsertParams())
 
-  override fun createIfNotExists(name: BucketName, action: BucketPutParams.() -> Unit) =
-    createIfNotExists(name, BasicBucketPutParams().also(action))
+  override fun createIfNotExists(name: BucketName, action: BucketUpsertParams.() -> Unit) =
+    createIfNotExists(name, BasicBucketUpsertParams().also(action))
 
 
   override fun delete(name: BucketName) =
