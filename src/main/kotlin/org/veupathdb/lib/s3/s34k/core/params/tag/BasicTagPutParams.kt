@@ -8,7 +8,7 @@ import org.veupathdb.lib.s3.s34k.params.tag.TagPutParams
 open class BasicTagPutParams(
   region: String? = null,
 
-  override var callback: ((tags: TagMap) -> Unit)? = null
+  override var callback: (() -> Unit)? = null
 ) : TagPutParams, BasicRegionRequestParams(region) {
   override val tags = BasicMutableTagMap()
 }
