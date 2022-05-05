@@ -3,24 +3,26 @@ package org.veupathdb.lib.s3.s34k.core
 import org.veupathdb.lib.s3.s34k.BucketContainer
 import org.veupathdb.lib.s3.s34k.BucketName
 import org.veupathdb.lib.s3.s34k.core.params.bucket.*
+import org.veupathdb.lib.s3.s34k.core.params.bucket.put.BasicBucketPutParams
 import org.veupathdb.lib.s3.s34k.core.params.bucket.recursive.BasicRecursiveBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.*
+import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 
 abstract class AbstractBucketContainer : BucketContainer {
 
   override fun create(name: BucketName) =
-    create(name, BasicBucketCreateParams())
+    create(name, BasicBucketPutParams())
 
-  override fun create(name: BucketName, action: BucketCreateParams.() -> Unit) =
-    create(name, BasicBucketCreateParams().also(action))
+  override fun create(name: BucketName, action: BucketPutParams.() -> Unit) =
+    create(name, BasicBucketPutParams().also(action))
 
 
   override fun createIfNotExists(name: BucketName) =
-    createIfNotExists(name, BasicBucketCreateParams())
+    createIfNotExists(name, BasicBucketPutParams())
 
-  override fun createIfNotExists(name: BucketName, action: BucketCreateParams.() -> Unit) =
-    createIfNotExists(name, BasicBucketCreateParams().also(action))
+  override fun createIfNotExists(name: BucketName, action: BucketPutParams.() -> Unit) =
+    createIfNotExists(name, BasicBucketPutParams().also(action))
 
 
   override fun delete(name: BucketName) =
