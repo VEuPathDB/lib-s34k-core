@@ -11,7 +11,7 @@ import java.time.OffsetDateTime
 
 abstract class AbstractBucket(
   override val name: BucketName,
-  override val region: String?,
+  override val region: String,
   override val creationDate: OffsetDateTime,
   override val client: S3Client
 ) : Bucket {
