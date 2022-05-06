@@ -10,7 +10,7 @@ import java.time.OffsetDateTime
 open class BasicObjectMeta(
   override val bucket: Bucket,
   override val path: String,
-  override val region: String,
+  override val region: String?,
   override val contentType: String,
   override val size: Long,
   override val lastModified: OffsetDateTime,
