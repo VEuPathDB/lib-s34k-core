@@ -5,6 +5,7 @@ import org.veupathdb.lib.s3.s34k.core.params.BasicDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.*
 import org.veupathdb.lib.s3.s34k.core.params.`object`.directory.BasicDirectoryDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.multi.BasicMultiObjectDeleteParams
+import org.veupathdb.lib.s3.s34k.core.params.`object`.touch.BasicObjectTouchParams
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryDeleteParams
