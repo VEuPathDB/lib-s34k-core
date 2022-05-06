@@ -7,7 +7,7 @@ import org.veupathdb.lib.s3.s34k.core.params.`object`.BasicObjectExistsParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.BasicObjectStatParams
 import org.veupathdb.lib.s3.s34k.fields.Headers
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
-import org.veupathdb.lib.s3.s34k.params.ExistsParams
+import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
 
 abstract class AbstractS3Object(
@@ -27,7 +27,7 @@ abstract class AbstractS3Object(
   override fun exists() =
     exists(BasicObjectExistsParams())
 
-  override fun exists(action: ExistsParams.() -> Unit) =
+  override fun exists(action: ObjectExistsParams.() -> Unit) =
     exists(BasicObjectExistsParams().also(action))
 
 
