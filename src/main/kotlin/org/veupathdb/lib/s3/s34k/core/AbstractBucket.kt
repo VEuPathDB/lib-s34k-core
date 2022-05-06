@@ -2,9 +2,9 @@ package org.veupathdb.lib.s3.s34k.core
 
 import org.veupathdb.lib.s3.s34k.Bucket
 import org.veupathdb.lib.s3.s34k.BucketName
-import org.veupathdb.lib.s3.s34k.core.params.BasicDeleteParams
+import org.veupathdb.lib.s3.s34k.core.params.bucket.BasicBucketDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.bucket.recursive.BasicRecursiveBucketDeleteParams
-import org.veupathdb.lib.s3.s34k.params.DeleteParams
+import org.veupathdb.lib.s3.s34k.params.bucket.BucketDeleteParams
 import org.veupathdb.lib.s3.s34k.params.bucket.recursive.RecursiveBucketDeleteParams
 import java.time.OffsetDateTime
 
@@ -15,10 +15,10 @@ abstract class AbstractBucket(
 ) : Bucket {
 
   override fun delete() =
-    delete(BasicDeleteParams())
+    delete(BasicBucketDeleteParams())
 
-  override fun delete(action: DeleteParams.() -> Unit) =
-    delete(BasicDeleteParams().also(action))
+  override fun delete(action: BucketDeleteParams.() -> Unit) =
+    delete(BasicBucketDeleteParams().also(action))
 
 
   override fun deleteRecursive() =
