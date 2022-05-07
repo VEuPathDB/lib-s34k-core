@@ -4,6 +4,7 @@ import org.veupathdb.lib.s3.s34k.core.util.toImmutable
 import org.veupathdb.lib.s3.s34k.core.util.toSet
 import org.veupathdb.lib.s3.s34k.fields.PathSet
 
+@Suppress("unused")
 open class BasicPathSet : PathSet {
   private val raw: Set<String>
 

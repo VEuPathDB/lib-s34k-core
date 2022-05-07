@@ -8,6 +8,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock
 import kotlin.concurrent.read
 import kotlin.concurrent.write
 
+@Suppress("unused")
 open class BasicMutableQueryParams : MutableQueryParams, BasicMutableListMap<String, String> {
 
   constructor() : super()

@@ -3,6 +3,7 @@ package org.veupathdb.lib.s3.s34k.core.fields
 import org.veupathdb.lib.s3.s34k.core.util.*
 import org.veupathdb.lib.s3.s34k.fields.QueryParams
 
+@Suppress("unused")
 open class BasicQueryParams : QueryParams, BasicListMap<String, String> {
 
   constructor() : super()

@@ -1,11 +1,11 @@
-package org.veupathdb.lib.s3.s34k.core
+package org.veupathdb.lib.s3.s34k.core.buckets
 
-import org.veupathdb.lib.s3.s34k.BucketContainer
-import org.veupathdb.lib.s3.s34k.BucketName
+import org.veupathdb.lib.s3.s34k.buckets.BucketContainer
 import org.veupathdb.lib.s3.s34k.core.params.bucket.*
 import org.veupathdb.lib.s3.s34k.core.params.bucket.put.BasicBucketPutParams
 import org.veupathdb.lib.s3.s34k.core.params.bucket.put.BasicBucketUpsertParams
 import org.veupathdb.lib.s3.s34k.core.params.bucket.recursive.BasicRecursiveBucketDeleteParams
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 import org.veupathdb.lib.s3.s34k.params.bucket.*
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketPutParams
 import org.veupathdb.lib.s3.s34k.params.bucket.put.BucketUpsertParams

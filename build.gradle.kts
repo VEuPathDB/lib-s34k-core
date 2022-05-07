@@ -33,6 +33,7 @@ java {
 
 dependencies {
   implementation(kotlin("stdlib"))
+  implementation("org.slf4j:slf4j-api:1.7.36")
 
   api("org.veupathdb.lib.s3:s34k:0.3.0-SNAPSHOT") { isChanging = true }
 

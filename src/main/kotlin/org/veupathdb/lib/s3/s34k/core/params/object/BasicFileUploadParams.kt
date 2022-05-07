@@ -1,6 +1,6 @@
 package org.veupathdb.lib.s3.s34k.core.params.`object`
 
-import org.veupathdb.lib.s3.s34k.S3Object
+import org.veupathdb.lib.s3.s34k.objects.S3Object
 import org.veupathdb.lib.s3.s34k.params.`object`.FileUploadParams
 import java.io.File
 

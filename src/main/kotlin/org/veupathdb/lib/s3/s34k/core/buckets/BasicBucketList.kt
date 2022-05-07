@@ -1,15 +1,16 @@
-package org.veupathdb.lib.s3.s34k.core
+package org.veupathdb.lib.s3.s34k.core.buckets
 
-import org.veupathdb.lib.s3.s34k.Bucket
-import org.veupathdb.lib.s3.s34k.BucketList
-import org.veupathdb.lib.s3.s34k.BucketName
+import org.veupathdb.lib.s3.s34k.buckets.BucketList
+import org.veupathdb.lib.s3.s34k.buckets.S3Bucket
 import org.veupathdb.lib.s3.s34k.core.util.asImmutable
 import org.veupathdb.lib.s3.s34k.core.util.toImmutable
+import org.veupathdb.lib.s3.s34k.fields.BucketName
 
+@Suppress("unused")
 open class BasicBucketList : BucketList {
-  protected val mapped: Map<BucketName, Bucket>
+  protected val mapped: Map<BucketName, S3Bucket>
 
-  protected val indexed: List<Bucket>
+  protected val indexed: List<S3Bucket>
 
   override val size: Int
     get() = indexed.size
@@ -20,18 +21,18 @@ open class BasicBucketList : BucketList {
   override val isNotEmpty: Boolean
     get() = indexed.isNotEmpty()
 
-  constructor(vararg buckets: Bucket) {
-    mapped = HashMap<BucketName, Bucket>(buckets.size).also { buckets.forEach { b -> it[b.name] = b } }.asImmutable()
+  constructor(vararg buckets: S3Bucket) {
+    mapped = HashMap<BucketName, S3Bucket>(buckets.size).also { buckets.forEach { b -> it[b.name] = b } }.asImmutable()
     indexed = buckets.toList().asImmutable()
   }
 
-  constructor(buckets: Iterable<Bucket>) {
+  constructor(buckets: Iterable<S3Bucket>) {
     if (buckets is Collection) {
       indexed = ArrayList(buckets).asImmutable()
-      mapped = HashMap<BucketName, Bucket>(buckets.size).also { buckets.forEach { b -> it[b.name] = b } }.asImmutable()
+      mapped = HashMap<BucketName, S3Bucket>(buckets.size).also { buckets.forEach { b -> it[b.name] = b } }.asImmutable()
     } else {
-      val m = HashMap<BucketName, Bucket>(10)
-      val l = ArrayList<Bucket>(10)
+      val m = HashMap<BucketName, S3Bucket>(10)
+      val l = ArrayList<S3Bucket>(10)
 
       buckets.forEach {
         m[it.name] = it

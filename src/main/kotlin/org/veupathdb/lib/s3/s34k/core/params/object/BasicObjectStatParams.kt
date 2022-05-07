@@ -1,7 +1,7 @@
 package org.veupathdb.lib.s3.s34k.core.params.`object`
 
-import org.veupathdb.lib.s3.s34k.ObjectMeta
 import org.veupathdb.lib.s3.s34k.core.params.BasicRegionRequestParams
+import org.veupathdb.lib.s3.s34k.objects.ObjectMeta
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
 
 open class BasicObjectStatParams(

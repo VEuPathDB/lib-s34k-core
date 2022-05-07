@@ -7,6 +7,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock
 import kotlin.concurrent.read
 import kotlin.concurrent.write
 
+@Suppress("unused")
 open class BasicMutablePathSet : MutablePathSet {
 
   private val lock = ReentrantReadWriteLock()

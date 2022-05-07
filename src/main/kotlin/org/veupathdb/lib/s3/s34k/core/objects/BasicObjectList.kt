@@ -1,9 +1,9 @@
-package org.veupathdb.lib.s3.s34k.core
+package org.veupathdb.lib.s3.s34k.core.objects
 
-import org.veupathdb.lib.s3.s34k.ObjectList
-import org.veupathdb.lib.s3.s34k.S3Object
 import org.veupathdb.lib.s3.s34k.core.util.asImmutable
 import org.veupathdb.lib.s3.s34k.core.util.toImmutable
+import org.veupathdb.lib.s3.s34k.objects.ObjectList
+import org.veupathdb.lib.s3.s34k.objects.S3Object
 
 @Suppress("unused")
 open class BasicObjectList : ObjectList {

@@ -7,6 +7,7 @@ import org.veupathdb.lib.s3.s34k.core.util.toTag
 import org.veupathdb.lib.s3.s34k.fields.TagMap
 import java.util.stream.Stream
 
+@Suppress("unused")
 open class BasicTagMap : TagMap {
 
   private val raw: Map<String, String>

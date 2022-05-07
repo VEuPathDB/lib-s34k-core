@@ -9,6 +9,7 @@ import java.util.stream.Stream
 import kotlin.concurrent.read
 import kotlin.concurrent.write
 
+@Suppress("unused")
 open class BasicMutableTagMap : MutableTagMap {
 
   private val lock = ReentrantReadWriteLock()

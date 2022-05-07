@@ -5,6 +5,7 @@ import org.veupathdb.lib.s3.s34k.core.util.toImmutableSet
 import org.veupathdb.lib.s3.s34k.fields.TagSet
 import java.util.stream.Stream
 
+@Suppress("unused")
 open class BasicTagSet : TagSet {
 
   private val raw: Set<String>
