@@ -63,8 +63,8 @@ abstract class AbstractObjectContainer : ObjectContainer {
     listAll(BasicObjectListAllParams().also(action))
 
 
-  override fun list(prefix: String?, recursive: Boolean) =
-    list(BasicObjectListParams(prefix, recursive))
+  override fun list(prefix: String?) =
+    list(BasicObjectListParams(prefix))
 
   override fun list(action: ObjectListParams.() -> Unit) =
     list(BasicObjectListParams().also(action))
