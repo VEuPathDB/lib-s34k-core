@@ -6,6 +6,7 @@ import org.veupathdb.lib.s3.s34k.core.params.`object`.directory.BasicDirectoryDe
 import org.veupathdb.lib.s3.s34k.core.params.`object`.multi.BasicMultiObjectDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.touch.BasicObjectTouchParams
 import org.veupathdb.lib.s3.s34k.objects.ObjectContainer
+import org.veupathdb.lib.s3.s34k.objects.ObjectList
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.*
 import org.veupathdb.lib.s3.s34k.params.`object`.directory.DirectoryDeleteParams
@@ -56,10 +57,17 @@ abstract class AbstractObjectContainer : ObjectContainer {
 
 
   override fun listAll() =
-    listAll(BasicObjectListParams())
+    listAll(BasicObjectListAllParams())
 
-  override fun listAll(action: ObjectListParams.() -> Unit) =
-    listAll(BasicObjectListParams().also(action))
+  override fun listAll(action: ObjectListAllParams.() -> Unit) =
+    listAll(BasicObjectListAllParams().also(action))
+
+
+  override fun list(prefix: String?, recursive: Boolean) =
+    list(BasicObjectListParams(prefix, recursive))
+
+  override fun list(action: ObjectListParams.() -> Unit) =
+    list(BasicObjectListParams().also(action))
 
 
   override fun open(path: String) =
