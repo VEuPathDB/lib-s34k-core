@@ -56,10 +56,17 @@ abstract class AbstractObjectContainer : ObjectContainer {
 
 
   override fun listAll() =
-    listAll(BasicObjectListParams())
+    listAll(BasicObjectListAllParams())
 
-  override fun listAll(action: ObjectListParams.() -> Unit) =
-    listAll(BasicObjectListParams().also(action))
+  override fun listAll(action: ObjectListAllParams.() -> Unit) =
+    listAll(BasicObjectListAllParams().also(action))
+
+
+  override fun list(prefix: String?) =
+    list(BasicObjectListParams(prefix))
+
+  override fun list(action: ObjectListParams.() -> Unit) =
+    list(BasicObjectListParams().also(action))
 
 
   override fun open(path: String) =
