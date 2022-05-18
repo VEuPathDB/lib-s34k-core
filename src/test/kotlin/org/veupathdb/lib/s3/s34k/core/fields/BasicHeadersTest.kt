@@ -36,7 +36,7 @@ internal class BasicHeadersTest {
       @DisplayName("size returns 0")
       fun t3() {
         val tgt = BasicHeaders(emptyMap())
-        assertEquals(0, tgt.size)
+        assertEquals(0u, tgt.size)
       }
 
       @Test

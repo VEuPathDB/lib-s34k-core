@@ -9,10 +9,13 @@ import org.veupathdb.lib.s3.s34k.objects.S3Object
 import org.veupathdb.lib.s3.s34k.params.DeleteParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectExistsParams
 import org.veupathdb.lib.s3.s34k.params.`object`.ObjectStatParams
+import java.time.OffsetDateTime
 
 @Suppress("unused")
 abstract class AbstractS3Object(
   override val path: String,
+  override val lastModified: OffsetDateTime,
+  override val eTag: String?,
   override val region: String?,
   override val headers: Headers,
   override val bucket: S3Bucket,
