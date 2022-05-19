@@ -21,6 +21,10 @@ abstract class AbstractS3Object(
   override val bucket: S3Bucket,
 ) : S3Object {
 
+  override val baseName by lazy { path.substring(path.lastIndexOf('/')+1) }
+
+  override val dirName by lazy { path.substring(0, path.lastIndexOf('/')) }
+
   override fun delete() =
     delete(BasicDeleteParams())
 
