@@ -1,5 +1,6 @@
 package org.veupathdb.lib.s3.s34k.core.objects
 
+import org.veupathdb.lib.s3.s34k.SubPathListing
 import org.veupathdb.lib.s3.s34k.core.params.BasicDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.*
 import org.veupathdb.lib.s3.s34k.core.params.`object`.directory.BasicDirectoryDeleteParams
@@ -67,6 +68,13 @@ abstract class AbstractObjectContainer : ObjectContainer {
 
   override fun list(action: ObjectListParams.() -> Unit) =
     list(BasicObjectListParams().also(action))
+
+
+  override fun listSubPaths(prefix: String, delimiter: String) =
+    listSubPaths(BasicSubPathListParams(prefix, delimiter))
+
+  override fun listSubPaths(action: SubPathListParams.() -> Unit) =
+    listSubPaths(BasicSubPathListParams().also(action))
 
 
   override fun open(path: String) =
