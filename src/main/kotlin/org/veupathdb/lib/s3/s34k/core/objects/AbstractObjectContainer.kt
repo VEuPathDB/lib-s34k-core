@@ -1,6 +1,5 @@
 package org.veupathdb.lib.s3.s34k.core.objects
 
-import org.veupathdb.lib.s3.s34k.SubPathListing
 import org.veupathdb.lib.s3.s34k.core.params.BasicDeleteParams
 import org.veupathdb.lib.s3.s34k.core.params.`object`.*
 import org.veupathdb.lib.s3.s34k.core.params.`object`.directory.BasicDirectoryDeleteParams
@@ -69,6 +68,15 @@ abstract class AbstractObjectContainer : ObjectContainer {
   override fun list(action: ObjectListParams.() -> Unit) =
     list(BasicObjectListParams().also(action))
 
+  override fun streamAll() = streamAll(BasicObjectStreamAllParams())
+
+  override fun streamAll(action: ObjectStreamAllParams.() -> Unit) =
+    streamAll(BasicObjectStreamAllParams().also(action))
+
+  override fun stream(prefix: String?) = stream(BasicObjectStreamParams(prefix))
+
+  override fun stream(action: ObjectStreamParams.() -> Unit) =
+    stream(BasicObjectStreamParams().also(action))
 
   override fun listSubPaths(prefix: String, delimiter: String) =
     listSubPaths(BasicSubPathListParams(prefix, delimiter))
