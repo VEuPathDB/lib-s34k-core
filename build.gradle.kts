@@ -36,9 +36,7 @@ dependencies {
   implementation(kotlin("stdlib"))
   implementation("org.slf4j:slf4j-api:1.7.36")
 
-  api("org.veupathdb.lib.s3:s34k:0.9.0") {
-    isChanging = true
-  }
+  api("org.veupathdb.lib.s3:s34k:0.9.0")
 
   testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
   testImplementation(kotlin("test"))
@@ -54,10 +52,6 @@ task("docs") {
 
 tasks.withType<KotlinCompile> {
   kotlinOptions.jvmTarget = "1.8"
-}
-
-configurations.all {
-  resolutionStrategy.cacheChangingModulesFor(0, "seconds")
 }
 
 
