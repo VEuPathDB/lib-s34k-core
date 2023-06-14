@@ -16,6 +16,7 @@ abstract class AbstractS3Object(
   override val path: String,
   override val lastModified: OffsetDateTime?,
   override val eTag: String,
+  override val size: Long,
   override val region: String?,
   override val headers: Headers,
   override val bucket: S3Bucket,
