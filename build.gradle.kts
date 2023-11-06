@@ -1,14 +1,14 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-  kotlin("jvm") version "1.8.22"
-  id("org.jetbrains.dokka") version "1.8.20"
+  kotlin("jvm") version "1.9.20"
+  id("org.jetbrains.dokka") version "1.9.10"
   `java-library`
   `maven-publish`
 }
 
 group = "org.veupathdb.lib.s3"
-version = "0.9.0+s34k-0.10.0"
+version = "0.9.0+s34k-0.10.1"
 
 repositories {
   mavenLocal()
@@ -36,7 +36,7 @@ dependencies {
   implementation(kotlin("stdlib"))
   implementation("org.slf4j:slf4j-api:1.7.36")
 
-  api("org.veupathdb.lib.s3:s34k:0.10.0")
+  api("org.veupathdb.lib.s3:s34k:0.10.1")
 
   testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
   testImplementation(kotlin("test"))
