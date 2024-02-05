@@ -78,7 +78,7 @@ abstract class AbstractObjectContainer : ObjectContainer {
   override fun stream(action: ObjectStreamParams.() -> Unit) =
     stream(BasicObjectStreamParams().also(action))
 
-  override fun listSubPaths(prefix: String, delimiter: String) =
+  override fun listSubPaths(prefix: String?, delimiter: String) =
     listSubPaths(BasicSubPathListParams(prefix, delimiter))
 
   override fun listSubPaths(action: SubPathListParams.() -> Unit) =
